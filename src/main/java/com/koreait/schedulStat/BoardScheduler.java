@@ -11,8 +11,13 @@ import org.springframework.stereotype.Component;
 public class BoardScheduler {
     private final BoardDao boardDao;
 
+    private final DailyCount dailyCount;
+
     @Scheduled(cron = "0 0 1 * * *")
     public void process(){
-        System.out.println(boardDao.getTotal());
+        Long count = boardDao.getTotal();
+        System.out.println("dCount = " + count);
+
+        dailyCount.total(count);
     }
 }
