@@ -29,6 +29,9 @@ public class BoardController {
 
     @GetMapping("/list")
     public String list(Model model) {
+        long count = boardDao.getTotal();
+        System.out.println("count = " + count);
+
 
         List<Board> items = boardService.list();
         model.addAttribute("items", items);
