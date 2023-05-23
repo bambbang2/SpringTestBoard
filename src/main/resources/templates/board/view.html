@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+
+<main layout:fragment="content">
+    <form method="post">
+        <table th:object="${boardView}">
+            <tr>
+                <th th:text="#{boardForm.subject}"></th>
+                <td>
+                    <input type="text=" name="subject" th:field="*{subject}" th:value="*{subject}">
+                </td>
+            </tr>
+            <tr>
+                <th th:text="#{boardForm.content}"></th>
+                <td>
+                    <input type="textarea" name="content" th:field="*{content}" th:value="*{content}">
+                </td>
+            </tr>
+            <tr>
+                <th th:text="#{boardForm.regDt}"></th>
+                <td>
+                    <input type="hidden" name="regDt" th:text="*{#temporals.format(regDt, 'yyyy.MM.dd')}">
+                </td>
+            </tr>
+        </table>
+        <button type="submit">수정하기</button>
+    </form>
+</main>
+</html>
